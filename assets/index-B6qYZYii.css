@@ -971,6 +971,9 @@ h3,
 .w-full {
   width: 100%;
 }
+.w-half {
+  width: 50%;
+}
 .w-max {
   width: -moz-max-content;
   width: max-content;
@@ -3618,4 +3621,9 @@ h3,
 }
 [data-side="right"] .\[\[data-side\=right\]_\&\]\:cursor-e-resize {
   cursor: e-resize;
+}
+.service-mini {
+  flex: 1 1 calc(33.333% - 16px); /* 3 columns */
+  min-width: 200px; /* Optional: prevents shrinking too much */
+  height: 1rem;
 }
