@@ -55,7 +55,7 @@ window.onload = function () {
   demoButtons.forEach((button) => {
     if (
       button.textContent.includes("Get Quote") ||
-      button.textContent.includes("Start Project Wizard")
+      button.textContent.includes("Start Project")
     ) {
       button.addEventListener("click", function () {
         // Create demo request modal
