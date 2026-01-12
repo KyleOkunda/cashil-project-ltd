@@ -193,9 +193,8 @@
                 </h1>
                 <p class="font-body text-white-arch/70 text-lg">
                   Every successful project begins with a solid process. Our
-                  four-phase methodology has been refined over 18 years to
-                  deliver consistent, high-quality results across all project
-                  types.
+                  four-phase methodology has been refined to deliver consistent,
+                  high-quality results across all project types.
                 </p>
               </div>
             </div>
@@ -219,9 +218,9 @@
                   Our Process
                 </h2>
                 <p class="font-body text-steel max-w-2xl mx-auto">
-                  A proven methodology refined over 18 years, ensuring every
-                  project is delivered on time, within budget, and to the
-                  highest standards.
+                  A proven and refined methodology, ensuring every project is
+                  delivered on time, within budget, and to the highest
+                  standards.
                 </p>
               </div>
               <div class="relative max-w-4xl mx-auto">
@@ -238,7 +237,9 @@
                   <div
                     class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
                   >
-                    <div class="absolute left-1/2 -translate-x-1/2 z-10">
+                    <div
+                      class="slide-icon absolute left-1/2 -translate-x-1/2 z-10"
+                    >
                       <div
                         class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 bg-amber shadow-glow-amber animate-pulse-glow"
                       >
@@ -260,7 +261,7 @@
                       </div>
                     </div>
                     <div
-                      class="md:[direction:ltr] p-6 transition-all duration-500 md:col-start-1 md:text-right md:pr-16 opacity-100 translate-y-0"
+                      class="slide md:[direction:ltr] p-6 transition-all duration-500 md:col-start-1 md:text-right md:pr-16 opacity-100 translate-y-0"
                     >
                       <div class="inline-block">
                         <span
@@ -321,7 +322,9 @@
                   <div
                     class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center md:[direction:rtl]"
                   >
-                    <div class="absolute left-1/2 -translate-x-1/2 z-10">
+                    <div
+                      class="slide-icon absolute left-1/2 -translate-x-1/2 z-10"
+                    >
                       <div
                         class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 bg-steel/50"
                       >
@@ -346,7 +349,7 @@
                       </div>
                     </div>
                     <div
-                      class="md:[direction:ltr] p-6 transition-all duration-500 md:col-start-2 md:pl-16 opacity-50 translate-y-4"
+                      class="slide md:[direction:ltr] p-6 transition-all duration-500 md:col-start-2 md:pl-16 opacity-50 translate-y-4"
                     >
                       <div class="inline-block">
                         <span
@@ -403,7 +406,9 @@
                   <div
                     class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
                   >
-                    <div class="absolute left-1/2 -translate-x-1/2 z-10">
+                    <div
+                      class="slide-icon absolute left-1/2 -translate-x-1/2 z-10"
+                    >
                       <div
                         class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 bg-steel/50"
                       >
@@ -435,7 +440,7 @@
                       </div>
                     </div>
                     <div
-                      class="md:[direction:ltr] p-6 transition-all duration-500 md:col-start-1 md:text-right md:pr-16 opacity-50 translate-y-4"
+                      class="slide md:[direction:ltr] p-6 transition-all duration-500 md:col-start-1 md:text-right md:pr-16 opacity-50 translate-y-4"
                     >
                       <div class="inline-block">
                         <span
@@ -496,7 +501,9 @@
                   <div
                     class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center md:[direction:rtl]"
                   >
-                    <div class="absolute left-1/2 -translate-x-1/2 z-10">
+                    <div
+                      class="slide-icon absolute left-1/2 -translate-x-1/2 z-10"
+                    >
                       <div
                         class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 bg-steel/50"
                       >
@@ -518,7 +525,7 @@
                       </div>
                     </div>
                     <div
-                      class="md:[direction:ltr] p-6 transition-all duration-500 md:col-start-2 md:pl-16 opacity-50 translate-y-4"
+                      class="slide md:[direction:ltr] p-6 transition-all duration-500 md:col-start-2 md:pl-16 opacity-50 translate-y-4"
                     >
                       <div class="inline-block">
                         <span
@@ -1038,5 +1045,61 @@
         </footer>
       </div>
     </div>
+    <script>
+      // Animate on scroll
+      const observerOptions = {
+        threshold: 1.0,
+      };
+
+      const slideObserver = new IntersectionObserver((entries) => {
+        var visibleIcon;
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("opacity-50");
+            entry.target.classList.add("opacity-100");
+            visibleIcon = iconMapper.get(entry.target).children[0];
+
+            visibleIcon.classList.add(
+              "animate-pulse-glow",
+              "bg-amber",
+              "shadow-glow-amber"
+            );
+            visibleIcon.classList.remove("bg-steel/50");
+            //observer.unobserve(entry.target);
+            //make other slides invisible again
+            document.querySelectorAll(".slide").forEach((el) => {
+              if (el !== entry.target) {
+                var icon = iconMapper.get(el).children[0];
+                icon.classList.remove(
+                  "animate-pulse-glow",
+                  "bg-amber",
+                  "shadow-glow-amber"
+                );
+                icon.classList.add("bg-steel/50");
+                el.classList.remove("opacity-100");
+                el.classList.add("opacity-50");
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      var slides = document.querySelectorAll(".slide");
+      var slideicons = document.querySelectorAll(".slide-icon");
+      var iconMapper = new Map();
+      slideicons.forEach((icon) => {
+        icon.classList.remove(
+          "animate-pulse-glow",
+          "bg-amber",
+          "shadow-glow-amber"
+        );
+        //icon.classList.add("bg-steel/50");
+      });
+      slides.forEach((slide) => {
+        iconMapper.set(slide, slideicons[Array.from(slides).indexOf(slide)]);
+        slide.classList.add("opacity-50");
+        slideObserver.observe(slide);
+      });
+    </script>
   </body>
 </html>

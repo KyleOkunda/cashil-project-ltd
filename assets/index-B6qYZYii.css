@@ -3229,6 +3229,12 @@ h3,
     --tw-enter-translate-y: 100%;
   }
 }
+@media (max-width: 768px) {
+  .slide-icon {
+    display: none;
+  }
+}
+
 @media (min-width: 768px) {
   .md\:absolute {
     position: absolute;

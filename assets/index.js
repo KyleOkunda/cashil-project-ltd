@@ -34,7 +34,7 @@ window.onload = function () {
   //Nav responsiveness
   var menuBtn = document.getElementsByClassName("lg:hidden")[0];
   var mobileNav = document.getElementsByClassName("mobile-nav")[0];
-  console.log(mobileNav);
+
   var menuLogo = menuBtn.innerHTML;
   menuBtn.addEventListener("click", function () {
     if (mobileNav.classList.contains("showing")) {
@@ -214,14 +214,14 @@ window.onload = function () {
                   .setAttribute("disabled", "");
                 return;
               }
-              console.log("Email validated");
+
               if (phone.length < 10 || phone.length > 15) {
                 modal
                   .querySelector("#submit-request")
                   .setAttribute("disabled", "");
                 return;
               }
-              console.log("Phone validated", phone.length);
+
               modal
                 .querySelector("#submit-request")
                 .removeAttribute("disabled");
