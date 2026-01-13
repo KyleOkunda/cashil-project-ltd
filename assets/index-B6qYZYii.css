@@ -3630,6 +3630,6 @@ h3,
 }
 .service-mini {
   flex: 1 1 calc(33.333% - 16px); /* 3 columns */
-  min-width: 200px; /* Optional: prevents shrinking too much */
+
   height: 4rem;
 }
